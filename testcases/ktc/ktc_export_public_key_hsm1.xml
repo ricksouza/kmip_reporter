@@ -1,0 +1,107 @@
+<KMIP>
+<RequestMessage>
+<RequestHeader>
+<ProtocolVersion>
+<ProtocolVersionMajor type="Integer" value="1"/>
+<ProtocolVersionMinor type="Integer" value="3"/>
+</ProtocolVersion>
+<BatchCount type="Integer" value="1"/>
+</RequestHeader>
+<BatchItem>
+<Operation type="Enumeration" value="CreateKeyPair"/>
+<RequestPayload>
+<CommonTemplateAttribute>
+<Attribute>
+<AttributeName type="TextString" value="Cryptographic Algorithm"/>
+<AttributeValue type="Enumeration" value="RSA"/>
+</Attribute>
+<Attribute>
+<AttributeName type="TextString" value="Cryptographic Length"/>
+<AttributeValue type="Integer" value="2048"/>
+</Attribute>
+<Attribute>
+<AttributeName type="TextString" value="Activation Date"/>
+<AttributeValue type="DateTime" value="$NOW-3600"/>
+</Attribute>
+</CommonTemplateAttribute>
+<PrivateKeyTemplateAttribute>
+<Attribute>
+<AttributeName type="TextString" value="Cryptographic Usage Mask"/>
+<AttributeValue type="Integer" value="UnwrapKey"/>
+</Attribute>
+</PrivateKeyTemplateAttribute>
+<PublicKeyTemplateAttribute>
+<Attribute>
+<AttributeName type="TextString" value="Cryptographic Usage Mask"/>
+<AttributeValue type="Integer" value="WrapKey"/>
+</Attribute>
+</PublicKeyTemplateAttribute>
+</RequestPayload>
+</BatchItem>
+</RequestMessage>
+<ResponseMessage>
+<ResponseHeader>
+<ProtocolVersion>
+<ProtocolVersionMajor type="Integer" value="1"/>
+<ProtocolVersionMinor type="Integer" value="3"/>
+</ProtocolVersion>
+<TimeStamp type="DateTime" value="$NOW"/>
+<BatchCount type="Integer" value="1"/>
+</ResponseHeader>
+<BatchItem>
+<Operation type="Enumeration" value="CreateKeyPair"/>
+<ResultStatus type="Enumeration" value="Success"/>
+<ResponsePayload>
+<PrivateKeyUniqueIdentifier type="TextString" value="$IMPORTER_PRIV_UID"/>
+<PublicKeyUniqueIdentifier type="TextString" value="$IMPORTER_PUB_UID"/>
+</ResponsePayload>
+</BatchItem>
+</ResponseMessage>
+<RequestMessage>
+<RequestHeader>
+<ProtocolVersion>
+<ProtocolVersionMajor type="Integer" value="1"/>
+<ProtocolVersionMinor type="Integer" value="3"/>
+</ProtocolVersion>
+<BatchCount type="Integer" value="1"/>
+</RequestHeader>
+<BatchItem>
+<Operation type="Enumeration" value="Get"/>
+<RequestPayload>
+<UniqueIdentifier type="TextString" value="$IMPORTER_PUB_UID"/>
+<KeyFormatType type="Enumeration" value="TransparentRSAPublicKey"/>
+</RequestPayload>
+</BatchItem>
+</RequestMessage>
+<ResponseMessage>
+<ResponseHeader>
+<ProtocolVersion>
+<ProtocolVersionMajor type="Integer" value="1"/>
+<ProtocolVersionMinor type="Integer" value="3"/>
+</ProtocolVersion>
+<TimeStamp type="DateTime" value="$NOW"/>
+<BatchCount type="Integer" value="1"/>
+</ResponseHeader>
+<BatchItem>
+<Operation type="Enumeration" value="Get"/>
+<ResultStatus type="Enumeration" value="Success"/>
+<ResponsePayload>
+<ObjectType type="Enumeration" value="PublicKey"/>
+<UniqueIdentifier type="TextString" value="$IMPORTER_PUB_UID"/>
+<PublicKey>
+<KeyBlock>
+<KeyFormatType type="Enumeration" value="TransparentRSAPublicKey"/>
+<KeyValue>
+<KeyMaterial>
+<Modulus type="BigInteger" value="$IMPORTER_PUB_MODULUS"/>
+<PublicExponent type="BigInteger" value="$IMPORTER_PUB_EXPONENT"/>
+</KeyMaterial>
+</KeyValue>
+<CryptographicAlgorithm type="Enumeration" value="RSA"/>
+<CryptographicLength type="Integer" value="2048"/>
+</KeyBlock>
+</PublicKey>
+</ResponsePayload>
+</BatchItem>
+</ResponseMessage>
+</KMIP>

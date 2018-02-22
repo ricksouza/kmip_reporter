@@ -1,0 +1,42 @@
+<RequestMessage>
+<RequestHeader>
+<ProtocolVersion>
+<ProtocolVersionMajor type="Integer" value="1"/>
+<ProtocolVersionMinor type="Integer" value="2"/>
+</ProtocolVersion>
+<Authentication>
+<Credential>
+<CredentialType type="Enumeration" value="UsernameAndPassword"/>
+<CredentialValue>
+<Username type="TextString" value="labsec-2"/>
+<Password type="TextString" value="LabSECseclab123@"/>
+</CredentialValue>
+</Credential>
+</Authentication>
+<BatchCount type="Integer" value="3"/>
+</RequestHeader>
+<BatchItem>
+<Operation type="Enumeration" value="Locate"/>
+<RequestPayload>
+<Attribute>
+<AttributeName type="TextString" value="Name"/>
+<AttributeValue>
+<NameValue type="TextString" value="UID"/>
+<NameType type="Enumeration" value="UninterpretedTextString"/>
+</AttributeValue>
+</Attribute>
+</RequestPayload>
+</BatchItem>
+<BatchItem>
+<Operation type="Enumeration" value="Revoke"/>
+<RequestPayload>
+<RevocationReason>
+<RevocationReasonCode type="Enumeration" value="KeyCompromise"/>
+</RevocationReason>
+</RequestPayload>
+</BatchItem>
+<BatchItem>
+<Operation type="Enumeration" value="Destroy"/>
+<RequestPayload/>
+</BatchItem>
+</RequestMessage>

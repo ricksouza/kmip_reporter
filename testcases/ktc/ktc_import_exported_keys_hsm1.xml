@@ -1,0 +1,185 @@
+<KMIP>
+<RequestMessage>
+<RequestHeader>
+<ProtocolVersion>
+<ProtocolVersionMajor type="Integer" value="1"/>
+<ProtocolVersionMinor type="Integer" value="3"/>
+</ProtocolVersion>
+<BatchCount type="Integer" value="1"/>
+</RequestHeader>
+<BatchItem>
+<Operation type="Enumeration" value="Register"/>
+<RequestPayload>
+<ObjectType type="Enumeration" value="SymmetricKey"/>
+<TemplateAttribute>
+<Attribute>
+<AttributeName type="TextString" value="Cryptographic Usage Mask"/>
+<AttributeValue type="Integer" value="UnwrapKey"/>
+</Attribute>
+<Attribute>
+<AttributeName type="TextString" value="Cryptographic Parameters"/>
+<AttributeValue>
+<BlockCipherMode type="Enumeration" value="CTR"/>
+<RandomIV type="Boolean" value="true"/>
+</AttributeValue>
+</Attribute>
+<Attribute>
+<AttributeName type="TextString" value="Activation Date"/>
+<AttributeValue type="DateTime" value="$NOW-3600"/>
+</Attribute>
+</TemplateAttribute>
+<SymmetricKey>
+<KeyBlock>
+<KeyFormatType type="Enumeration" value="Raw"/>
+<KeyValue type="ByteString" value="$EXPORTER_TEMP_SYMM_KEK_KEY_VALUE"/>
+<CryptographicAlgorithm type="Enumeration" value="AES"/>
+<CryptographicLength type="Integer" value="128"/>
+<KeyWrappingData>
+<WrappingMethod type="Enumeration" value="Encrypt"/>
+<EncryptionKeyInformation>
+<UniqueIdentifier type="TextString" value="$IMPORTER_PRIV_UID"/>
+<CryptographicParameters>
+<CryptographicAlgorithm type="Enumeration" value="RSA"/>
+<PaddingMethod type="Enumeration" value="OAEP"/>
+<HashingAlgorithm type="Enumeration" value="SHA_256"/>
+</CryptographicParameters>
+</EncryptionKeyInformation>
+<EncodingOption type="Enumeration" value="NoEncoding"/>
+</KeyWrappingData>
+</KeyBlock>
+</SymmetricKey>
+</RequestPayload>
+</BatchItem>
+</RequestMessage>
+<ResponseMessage>
+<ResponseHeader>
+<ProtocolVersion>
+<ProtocolVersionMajor type="Integer" value="1"/>
+<ProtocolVersionMinor type="Integer" value="3"/>
+</ProtocolVersion>
+<TimeStamp type="DateTime" value="$NOW"/>
+<BatchCount type="Integer" value="1"/>
+</ResponseHeader>
+<BatchItem>
+<Operation type="Enumeration" value="Register"/>
+<ResultStatus type="Enumeration" value="Success"/>
+<ResponsePayload>
+<UniqueIdentifier type="TextString" value="$IMPORTER_TEMP_SYMM_KEK_UID"/>
+</ResponsePayload>
+</BatchItem>
+</ResponseMessage>
+<RequestMessage>
+<RequestHeader>
+<ProtocolVersion>
+<ProtocolVersionMajor type="Integer" value="1"/>
+<ProtocolVersionMinor type="Integer" value="3"/>
+</ProtocolVersion>
+<BatchCount type="Integer" value="1"/>
+</RequestHeader>
+<BatchItem>
+<Operation type="Enumeration" value="Register"/>
+<RequestPayload>
+<ObjectType type="Enumeration" value="PrivateKey"/>
+<TemplateAttribute>
+<Attribute>
+<AttributeName type="TextString" value="Cryptographic Usage Mask"/>
+<AttributeValue type="Integer" value="Sign"/>
+</Attribute>
+<Attribute>
+<AttributeName type="TextString" value="Cryptographic Algorithm"/>
+<AttributeValue type="Enumeration" value="RSA"/>
+</Attribute>
+<Attribute>
+<AttributeName type="TextString" value="Cryptographic Length"/>
+<AttributeValue type="Integer" value="2048"/>
+</Attribute>
+</TemplateAttribute>
+<PrivateKey>
+<KeyBlock>
+<KeyFormatType type="Enumeration" value="TransparentRSAPrivateKey"/>
+<KeyValue type="ByteString" value="$EXPORTER_PRIV_KEY_VALUE"/>
+<CryptographicAlgorithm type="Enumeration" value="RSA"/>
+<CryptographicLength type="Integer" value="2048"/>
+<KeyWrappingData>
+<WrappingMethod type="Enumeration" value="Encrypt"/>
+<EncryptionKeyInformation>
+<UniqueIdentifier type="TextString" value="$IMPORTER_TEMP_SYMM_KEK_UID"/>
+<CryptographicParameters>
+<BlockCipherMode type="Enumeration" value="CTR"/>
+<RandomIV type="Boolean" value="true"/>
+</CryptographicParameters>
+</EncryptionKeyInformation>
+<IVCounterNonce type="ByteString" value="$EXPORTER_WRAP_01_IV"/>
+<EncodingOption type="Enumeration" value="TTLVEncoding"/>
+</KeyWrappingData>
+</KeyBlock>
+</PrivateKey>
+</RequestPayload>
+</BatchItem>
+</RequestMessage>
+<ResponseMessage>
+<ResponseHeader>
+<ProtocolVersion>
+<ProtocolVersionMajor type="Integer" value="1"/>
+<ProtocolVersionMinor type="Integer" value="3"/>
+</ProtocolVersion>
+<TimeStamp type="DateTime" value="$NOW"/>
+<BatchCount type="Integer" value="1"/>
+</ResponseHeader>
+<BatchItem>
+<Operation type="Enumeration" value="Register"/>
+<ResultStatus type="Enumeration" value="Success"/>
+<ResponsePayload>
+<UniqueIdentifier type="TextString" value="$IMPORTER_IMPORTED_UID"/>
+</ResponsePayload>
+</BatchItem>
+</ResponseMessage>
+<RequestMessage>
+<RequestHeader>
+<ProtocolVersion>
+<ProtocolVersionMajor type="Integer" value="1"/>
+<ProtocolVersionMinor type="Integer" value="3"/>
+</ProtocolVersion>
+<BatchCount type="Integer" value="2"/>
+</RequestHeader>
+<BatchItem>
+<Operation type="Enumeration" value="Revoke"/>
+<RequestPayload>
+<UniqueIdentifier type="TextString" value="$IMPORTER_TEMP_SYMM_KEK_UID"/>
+<RevocationReason>
+<RevocationReasonCode type="Enumeration" value="CessationOfOperation"/>
+</RevocationReason>
+</RequestPayload>
+</BatchItem>
+<BatchItem>
+<Operation type="Enumeration" value="Destroy"/>
+<RequestPayload>
+<UniqueIdentifier type="TextString" value="$IMPORTER_TEMP_SYMM_KEK_UID"/>
+</RequestPayload>
+</BatchItem>
+</RequestMessage>
+<ResponseMessage>
+<ResponseHeader>
+<ProtocolVersion>
+<ProtocolVersionMajor type="Integer" value="1"/>
+<ProtocolVersionMinor type="Integer" value="3"/>
+</ProtocolVersion>
+<TimeStamp type="DateTime" value="$NOW"/>
+<BatchCount type="Integer" value="2"/>
+</ResponseHeader>
+<BatchItem>
+<Operation type="Enumeration" value="Revoke"/>
+<ResultStatus type="Enumeration" value="Success"/>
+<ResponsePayload>
+<UniqueIdentifier type="TextString" value="$IMPORTER_TEMP_SYMM_KEK_UID"/>
+</ResponsePayload>
+</BatchItem>
+<BatchItem>
+<Operation type="Enumeration" value="Destroy"/>
+<ResultStatus type="Enumeration" value="Success"/>
+<ResponsePayload>
+<UniqueIdentifier type="TextString" value="$IMPORTER_TEMP_SYMM_KEK_UID"/>
+</ResponsePayload>
+</BatchItem>
+</ResponseMessage>
+</KMIP>

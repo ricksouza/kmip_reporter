@@ -1,0 +1,76 @@
+<KMIP>
+<RequestMessage>
+<RequestHeader>
+<ProtocolVersion>
+<ProtocolVersionMajor type="Integer" value="1"/>
+<ProtocolVersionMinor type="Integer" value="3"/>
+</ProtocolVersion>
+<BatchCount type="Integer" value="4"/>
+</RequestHeader>
+<BatchItem>
+<Operation type="Enumeration" value="Revoke"/>
+<RequestPayload>
+<UniqueIdentifier type="TextString" value="$EXPORTER_CLIENT_KEK_UID"/>
+<RevocationReason>
+<RevocationReasonCode type="Enumeration" value="CessationOfOperation"/>
+</RevocationReason>
+</RequestPayload>
+</BatchItem>
+<BatchItem>
+<Operation type="Enumeration" value="Destroy"/>
+<RequestPayload>
+<UniqueIdentifier type="TextString" value="$EXPORTER_CLIENT_KEK_UID"/>
+</RequestPayload>
+</BatchItem>
+<BatchItem>
+<Operation type="Enumeration" value="Destroy"/>
+<RequestPayload>
+<UniqueIdentifier type="TextString" value="$EXPORTER_TBE_PRIV_UID"/>
+</RequestPayload>
+</BatchItem>
+<BatchItem>
+<Operation type="Enumeration" value="Destroy"/>
+<RequestPayload>
+<UniqueIdentifier type="TextString" value="$EXPORTER_TBE_PUB_UID"/>
+</RequestPayload>
+</BatchItem>
+</RequestMessage>
+<ResponseMessage>
+<ResponseHeader>
+<ProtocolVersion>
+<ProtocolVersionMajor type="Integer" value="1"/>
+<ProtocolVersionMinor type="Integer" value="3"/>
+</ProtocolVersion>
+<TimeStamp type="DateTime" value="$NOW"/>
+<BatchCount type="Integer" value="4"/>
+</ResponseHeader>
+<BatchItem>
+<Operation type="Enumeration" value="Revoke"/>
+<ResultStatus type="Enumeration" value="Success"/>
+<ResponsePayload>
+<UniqueIdentifier type="TextString" value="$EXPORTER_CLIENT_KEK_UID"/>
+</ResponsePayload>
+</BatchItem>
+<BatchItem>
+<Operation type="Enumeration" value="Destroy"/>
+<ResultStatus type="Enumeration" value="Success"/>
+<ResponsePayload>
+<UniqueIdentifier type="TextString" value="$EXPORTER_CLIENT_KEK_UID"/>
+</ResponsePayload>
+</BatchItem>
+<BatchItem>
+<Operation type="Enumeration" value="Destroy"/>
+<ResultStatus type="Enumeration" value="Success"/>
+<ResponsePayload>
+<UniqueIdentifier type="TextString" value="$EXPORTER_TBE_PRIV_UID"/>
+</ResponsePayload>
+</BatchItem>
+<BatchItem>
+<Operation type="Enumeration" value="Destroy"/>
+<ResultStatus type="Enumeration" value="Success"/>
+<ResponsePayload>
+<UniqueIdentifier type="TextString" value="$EXPORTER_TBE_PUB_UID"/>
+</ResponsePayload>
+</BatchItem>
+</ResponseMessage>
+</KMIP>

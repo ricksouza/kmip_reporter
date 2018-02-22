@@ -1,0 +1,21 @@
+<RequestMessage>
+<RequestHeader>
+<ProtocolVersion>
+<ProtocolVersionMajor type="Integer" value="1"/>
+<ProtocolVersionMinor type="Integer" value="2"/>
+</ProtocolVersion>
+<BatchCount type="Integer" value="1"/>
+</RequestHeader>
+<BatchItem>
+<Operation type="Enumeration" value="Locate"/>
+<RequestPayload>
+<Attribute>
+<AttributeName type="TextString" value="Name"/>
+<AttributeValue>
+<NameValue type="TextString" value="UID"/>
+<NameType type="Enumeration" value="UninterpretedTextString"/>
+</AttributeValue>
+</Attribute>
+</RequestPayload>
+</BatchItem>
+</RequestMessage>

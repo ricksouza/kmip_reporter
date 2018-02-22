@@ -1,0 +1,30 @@
+\documentclass[a4paper]{report}
+\usepackage[margin=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{alltt}
+\usepackage{fancyhdr}
+\usepackage[yyyymmdd,hhmmss]{datetime}
+\usepackage{color}
+
+\pagestyle{fancy}
+\rfoot{\thepage}
+\cfoot{@testcase}
+\rfoot{\today  \currenttime}
+\renewcommand{\dateseparator}{-}
+
+
+\title{Relatório de Teste @testcase \\ \emph{Dinamo HSM} }
+\author{LabSEC - Universidade Federal de Santa Catatina}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Execução}
+\begin{alltt}
+	\small
+	\input{report/diff}
+\end{alltt}
+
+\end{document}

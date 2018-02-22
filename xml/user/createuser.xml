@@ -1,0 +1,25 @@
+<RequestMessage>
+  <RequestHeader>
+    <ProtocolVersion>
+      <ProtocolVersionMajor type="Integer" value="1" />
+      <ProtocolVersionMinor type="Integer" value="3" />
+    </ProtocolVersion>
+    <Authentication>
+      <Credential>
+        <CredentialType type="Enumeration" value="UsernameAndPassword" />
+        <CredentialValue>
+          <Username type="TextString" value="vco_test" />
+          <Password type="TextString" value="Teste112233$" />
+        </CredentialValue>
+      </Credential>
+    </Authentication>
+    <BatchCount type="Integer" value="1" />
+  </RequestHeader>
+  <BatchItem>
+    <Operation type="Enumeration" value="CreateUser" />
+    <RequestPayload>
+      <UserName type="TextString" value="labsec-pw" />
+      <UserType type="Enumeration" value="User" />
+    </RequestPayload>
+  </BatchItem>
+</RequestMessage>

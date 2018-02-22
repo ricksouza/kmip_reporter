@@ -1,0 +1,31 @@
+<RequestMessage>
+  <RequestHeader>
+    <ProtocolVersion>
+      <ProtocolVersionMajor type="Integer" value="1" />
+      <ProtocolVersionMinor type="Integer" value="3" />
+    </ProtocolVersion>
+    <Authentication>
+      <Credential>
+        <CredentialType type="Enumeration" value="UsernameAndPassword" />
+        <CredentialValue>
+          <Username type="TextString" value="default" />
+          <Password type="TextString" value="default" />
+        </CredentialValue>
+      </Credential>
+      <Credential>
+        <CredentialType type="Enumeration" value="OTP" />
+        <CredentialValue>
+          <OTPCode type="Integer" value="709443" />
+        </CredentialValue>
+      </Credential>
+    </Authentication>
+    <BatchCount type="Integer" value="1" />
+  </RequestHeader>
+  <BatchItem>
+    <Operation type="Enumeration" value="ChangePassword" />
+    <RequestPayload>
+      <OldPassword type="TextString" value="default" />
+      <NewPassword type="TextString" value="Default123$" />
+    </RequestPayload>
+  </BatchItem>
+</RequestMessage>

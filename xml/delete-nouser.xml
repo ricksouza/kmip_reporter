@@ -1,0 +1,15 @@
+<RequestMessage>
+<RequestHeader>
+<ProtocolVersion>
+<ProtocolVersionMajor type="Integer" value="1"/>
+<ProtocolVersionMinor type="Integer" value="1"/>
+</ProtocolVersion>
+<BatchCount type="Integer" value="1"/>
+</RequestHeader>
+<BatchItem>
+<Operation type="Enumeration" value="Destroy"/>
+<RequestPayload>
+<UniqueIdentifier type="TextString" value="UID"/>
+</RequestPayload>
+</BatchItem>
+</RequestMessage>
